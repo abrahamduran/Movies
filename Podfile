@@ -9,6 +9,7 @@ target 'Movies' do
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'AlamofireNetworkActivityIndicator'
+  pod 'RealmSwift'
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Swinject'
