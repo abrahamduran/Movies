@@ -28,6 +28,8 @@
 		17FC36A3231FA6200033E67D /* MoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36A2231FA6200033E67D /* MoviesService.swift */; };
 		17FC36A5231FA9910033E67D /* ApplicationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36A4231FA9910033E67D /* ApplicationError.swift */; };
 		17FC36A7231FB0F70033E67D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36A6231FB0F70033E67D /* Date+Extension.swift */; };
+		17FC36AA231FB7AE0033E67D /* MovieObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36A9231FB7AE0033E67D /* MovieObject.swift */; };
+		17FC36AC231FB7BD0033E67D /* MovieDetailObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36AB231FB7BD0033E67D /* MovieDetailObject.swift */; };
 		17FC36AE231FBA160033E67D /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36AD231FBA160033E67D /* Persistable.swift */; };
 		17FC36B22320403F0033E67D /* MoviesDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36B12320403F0033E67D /* MoviesDataStorage.swift */; };
 		97C22CD741B5B1D278AA36E3 /* Pods_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F45007437FC72103560A03 /* Pods_Movies.framework */; };
@@ -70,6 +72,8 @@
 		17FC36A2231FA6200033E67D /* MoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesService.swift; sourceTree = "<group>"; };
 		17FC36A4231FA9910033E67D /* ApplicationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationError.swift; sourceTree = "<group>"; };
 		17FC36A6231FB0F70033E67D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		17FC36A9231FB7AE0033E67D /* MovieObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieObject.swift; sourceTree = "<group>"; };
+		17FC36AB231FB7BD0033E67D /* MovieDetailObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailObject.swift; sourceTree = "<group>"; };
 		17FC36AD231FBA160033E67D /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		17FC36B12320403F0033E67D /* MoviesDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDataStorage.swift; sourceTree = "<group>"; };
 		1F60F8D7552909CC2CEBC7AF /* Pods-MoviesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesTests.debug.xcconfig"; path = "Target Support Files/Pods-MoviesTests/Pods-MoviesTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 		17FC367F231F8E3D0033E67D /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				17FC36A8231FB4850033E67D /* Objects */,
 				17FC36AD231FBA160033E67D /* Persistable.swift */,
 			);
 			path = Database;
@@ -277,6 +282,15 @@
 				17FC3696231F9CFB0033E67D /* MovieRequest.swift */,
 			);
 			path = Requests;
+			sourceTree = "<group>";
+		};
+		17FC36A8231FB4850033E67D /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				17FC36A9231FB7AE0033E67D /* MovieObject.swift */,
+				17FC36AB231FB7BD0033E67D /* MovieDetailObject.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		1A5626C41FF4112C2196179D /* Pods */ = {
@@ -470,6 +484,7 @@
 				17FC3697231F9CFB0033E67D /* MovieRequest.swift in Sources */,
 				17FC36A1231FA2670033E67D /* MovieDetail.swift in Sources */,
 				17FC3693231F98340033E67D /* NetworkParameters.swift in Sources */,
+				17FC36AC231FB7BD0033E67D /* MovieDetailObject.swift in Sources */,
 				17FC3655231F68110033E67D /* AppDelegate.swift in Sources */,
 				17FC36A5231FA9910033E67D /* ApplicationError.swift in Sources */,
 				17FC368D231F95D50033E67D /* DispatchQueue+Extension.swift in Sources */,
@@ -483,6 +498,7 @@
 				17FC36AE231FBA160033E67D /* Persistable.swift in Sources */,
 				17FC36A3231FA6200033E67D /* MoviesService.swift in Sources */,
 				17FC3686231F92DF0033E67D /* APIClient.swift in Sources */,
+				17FC36AA231FB7AE0033E67D /* MovieObject.swift in Sources */,
 				17FC369B231F9DC10033E67D /* Movie.swift in Sources */,
 				17FC36B22320403F0033E67D /* MoviesDataStorage.swift in Sources */,
 				17FC3695231F9B610033E67D /* Notification+Extension.swift in Sources */,
