@@ -1,5 +1,5 @@
 //
-//  MoviesService.swift
+//  APIService.swift
 //  Movies
 //
 //  Created by Abraham Isaac Durán on 9/4/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class MoviesService: MoviesDataSource {
+final class APIService: MoviesDataSource {
     private let api: APIClient
     
     init(apiClient: APIClient) { api = apiClient }
