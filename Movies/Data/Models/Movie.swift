@@ -14,6 +14,7 @@ struct Movie: Decodable {
     let title: String
     let rating: Double
     let posterPath: String
+    let releaseDate: Date
     var isFavorite: Bool
     var isInWatchList: Bool
     var detail: MovieDetail?
@@ -24,6 +25,7 @@ struct Movie: Decodable {
 extension Movie {
     enum CodingKeys: String, CodingKey {
         case id, title, vote_average, poster_path, results
+        case release_date
     }
     
     init(from decoder: Decoder) throws {
@@ -33,6 +35,7 @@ extension Movie {
         title = try container.decode(String.self, forKey: .title)
         rating = try container.decode(Double.self, forKey: .vote_average)
         posterPath = try container.decode(String.self, forKey: .poster_path)
+        releaseDate = Date(with: try container.decode(String.self, forKey: .release_date))!
         isFavorite = false
         isInWatchList = false
     }

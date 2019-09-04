@@ -28,6 +28,11 @@
 		17FC36A3231FA6200033E67D /* MoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36A2231FA6200033E67D /* MoviesService.swift */; };
 		17FC36A5231FA9910033E67D /* ApplicationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36A4231FA9910033E67D /* ApplicationError.swift */; };
 		17FC36A7231FB0F70033E67D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36A6231FB0F70033E67D /* Date+Extension.swift */; };
+		17FC36AA231FB7AE0033E67D /* MovieObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36A9231FB7AE0033E67D /* MovieObject.swift */; };
+		17FC36AC231FB7BD0033E67D /* MovieDetailObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36AB231FB7BD0033E67D /* MovieDetailObject.swift */; };
+		17FC36AE231FBA160033E67D /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36AD231FBA160033E67D /* Persistable.swift */; };
+		17FC36B0232018350033E67D /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36AF232018350033E67D /* RealmService.swift */; };
+		17FC36B22320403F0033E67D /* MoviesDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36B12320403F0033E67D /* MoviesDataStorage.swift */; };
 		97C22CD741B5B1D278AA36E3 /* Pods_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F45007437FC72103560A03 /* Pods_Movies.framework */; };
 		E5CBF6075922726AE94D6D9D /* Pods_MoviesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761AF45C8A95FACC54A8E633 /* Pods_MoviesTests.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +73,11 @@
 		17FC36A2231FA6200033E67D /* MoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesService.swift; sourceTree = "<group>"; };
 		17FC36A4231FA9910033E67D /* ApplicationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationError.swift; sourceTree = "<group>"; };
 		17FC36A6231FB0F70033E67D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		17FC36A9231FB7AE0033E67D /* MovieObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieObject.swift; sourceTree = "<group>"; };
+		17FC36AB231FB7BD0033E67D /* MovieDetailObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailObject.swift; sourceTree = "<group>"; };
+		17FC36AD231FBA160033E67D /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
+		17FC36AF232018350033E67D /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		17FC36B12320403F0033E67D /* MoviesDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDataStorage.swift; sourceTree = "<group>"; };
 		1F60F8D7552909CC2CEBC7AF /* Pods-MoviesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesTests.debug.xcconfig"; path = "Target Support Files/Pods-MoviesTests/Pods-MoviesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E58D473486324886A0CEE8C /* Pods-Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.release.xcconfig"; path = "Target Support Files/Pods-Movies/Pods-Movies.release.xcconfig"; sourceTree = "<group>"; };
 		63B3600F6667A8952FB06F13 /* Pods-Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.debug.xcconfig"; path = "Target Support Files/Pods-Movies/Pods-Movies.debug.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +225,9 @@
 		17FC367F231F8E3D0033E67D /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				17FC36A8231FB4850033E67D /* Objects */,
+				17FC36AD231FBA160033E67D /* Persistable.swift */,
+				17FC36AF232018350033E67D /* RealmService.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -242,6 +255,7 @@
 				17FC3683231F91FF0033E67D /* Memory */,
 				17FC367E231F8E350033E67D /* Networking */,
 				17FC369C231FA0EE0033E67D /* MoviesDataSource.swift */,
+				17FC36B12320403F0033E67D /* MoviesDataStorage.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -271,6 +285,15 @@
 				17FC3696231F9CFB0033E67D /* MovieRequest.swift */,
 			);
 			path = Requests;
+			sourceTree = "<group>";
+		};
+		17FC36A8231FB4850033E67D /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				17FC36A9231FB7AE0033E67D /* MovieObject.swift */,
+				17FC36AB231FB7BD0033E67D /* MovieDetailObject.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		1A5626C41FF4112C2196179D /* Pods */ = {
@@ -464,6 +487,7 @@
 				17FC3697231F9CFB0033E67D /* MovieRequest.swift in Sources */,
 				17FC36A1231FA2670033E67D /* MovieDetail.swift in Sources */,
 				17FC3693231F98340033E67D /* NetworkParameters.swift in Sources */,
+				17FC36AC231FB7BD0033E67D /* MovieDetailObject.swift in Sources */,
 				17FC3655231F68110033E67D /* AppDelegate.swift in Sources */,
 				17FC36A5231FA9910033E67D /* ApplicationError.swift in Sources */,
 				17FC368D231F95D50033E67D /* DispatchQueue+Extension.swift in Sources */,
@@ -474,9 +498,13 @@
 				17FC369D231FA0EE0033E67D /* MoviesDataSource.swift in Sources */,
 				17FC369F231FA1F70033E67D /* Typealiases.swift in Sources */,
 				17FC368F231F960D0033E67D /* UIApplication+Extension.swift in Sources */,
+				17FC36AE231FBA160033E67D /* Persistable.swift in Sources */,
 				17FC36A3231FA6200033E67D /* MoviesService.swift in Sources */,
+				17FC36B0232018350033E67D /* RealmService.swift in Sources */,
 				17FC3686231F92DF0033E67D /* APIClient.swift in Sources */,
+				17FC36AA231FB7AE0033E67D /* MovieObject.swift in Sources */,
 				17FC369B231F9DC10033E67D /* Movie.swift in Sources */,
+				17FC36B22320403F0033E67D /* MoviesDataStorage.swift in Sources */,
 				17FC3695231F9B610033E67D /* Notification+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

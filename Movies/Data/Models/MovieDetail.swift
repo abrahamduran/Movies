@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct MovieDetail: Decodable {
     let id: Movie.Id
@@ -15,15 +16,13 @@ struct MovieDetail: Decodable {
     let revenue: Int
     let runtime: Minutes
     let genres: [String]
-    let releaseDate: Date
     let productionCompanies: [String]
 }
 
 extension MovieDetail {
     enum CodingKeys: String, CodingKey {
         case id, overview, budget, revenue, runtime
-        case release_date, genres, production_companies
-        case name
+        case genres, production_companies, name
     }
     
     init(from decoder: Decoder) throws {
@@ -33,7 +32,6 @@ extension MovieDetail {
         budget = try container.decode(Int.self, forKey: .budget)
         revenue = try container.decode(Int.self, forKey: .revenue)
         runtime = try container.decode(Minutes.self, forKey: .runtime)
-        releaseDate = Date(with: try container.decode(String.self, forKey: .release_date))!
         
         var _genres = [String]()
         let genresContainer = try container.nestedUnkeyedContainer(forKey: .genres)
