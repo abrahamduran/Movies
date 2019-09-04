@@ -9,13 +9,18 @@
 import Foundation
 
 enum ApplicationError: LocalizedError {
-    case notImplemented
+    case notImplemented, dateParsing(date: String)
+    case objectNotFound
     
     
     var localizedDescription: String {
         switch self {
         case .notImplemented:
             return "The invoked action is not implemented as of now."
+        case .dateParsing(let date):
+            return "The date \(date) could not be parsed. Either the date has an invalid format or the formatter was changed"
+        case .objectNotFound:
+            return "The specified query produced no results."
         }
     }
     
