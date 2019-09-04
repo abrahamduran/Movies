@@ -51,5 +51,19 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NetworkParameters</key>
+	<dict>
+		<key>AuthKeys</key>
+		<dict>
+			<key>api_key</key>
+			<string></string>
+		</dict>
+		<key>HostName</key>
+		<string>${HOST_NAME}</string>
+		<key>TimeoutForRequest</key>
+		<real>60</real>
+		<key>URL</key>
+		<string>${HOST_NAME}${API_VERSION}</string>
+	</dict>
 </dict>
 </plist>
