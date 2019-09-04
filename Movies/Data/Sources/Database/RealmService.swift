@@ -17,11 +17,15 @@ final class RealmService: MoviesDataSource, MoviesDataStorage {
     }
     
     func discoverMovies(by year: Year, completion: @escaping ReadMoviesOperation) {
-        guard let date = Date(with: "01-01-\(year)") else {
-            completion(.failure(ApplicationError.dateParsing(date: "01-01-\(year)")))
+        guard let beginDate = Date(with: "\(year)-01-01") else {
+            completion(.failure(ApplicationError.dateParsing(date: "\(year)-01-01")))
             return
         }
-        let results = realm.objects(MovieObject.self).filter("releaseDate >= %@", date)
+        guard let endDate = Date(with: "\(year)-12-31") else {
+            completion(.failure(ApplicationError.dateParsing(date: "\(year)-12-31")))
+            return
+        }
+        let results = realm.objects(MovieObject.self).filter("releaseDate BETWEEN {%@, %@}", beginDate, endDate)
         completion(.success(results.map { Movie(with: $0) }))
     }
     
