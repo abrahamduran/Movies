@@ -27,7 +27,7 @@ extension Date {
     }
     
     init?(with string: String) {
-        if let date = Formatters.shortDate.date(from: s) {
+        if let date = Formatters.shortDate.date(from: string) {
             self = date
         } else { return nil }
     }
