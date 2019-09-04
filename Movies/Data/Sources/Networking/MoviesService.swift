@@ -8,12 +8,12 @@
 
 import Foundation
 
-class MoviesService: MoviesDataSource {
+final class MoviesService: MoviesDataSource {
     private let api: APIClient
     
     init(apiClient: APIClient) { api = apiClient }
     
-    func discoverMovies(by year: Year, completion: @escaping (Result<[Movie], Error>) -> Void) {
+    func discoverMovies(by year: Year, completion: @escaping ReadMoviesOperation) {
         let request = MovieRequest.discover(by: year)
         completionHandler(request: request, completion: completion)
     }
@@ -23,16 +23,16 @@ class MoviesService: MoviesDataSource {
         completionHandler(request: request, completion: completion)
     }
     
-    func searchMovies(with query: String, completion: @escaping (Result<[Movie], Error>) -> Void) {
+    func searchMovies(with query: String, completion: @escaping ReadMoviesOperation) {
         let request = MovieRequest.search(query)
         completionHandler(request: request, completion: completion)
     }
     
-    func getFavoriteMovies(completion: @escaping (Result<[Movie], Error>) -> Void) {
+    func getFavoriteMovies(completion: @escaping ReadMoviesOperation) {
         completion(.failure(ApplicationError.notImplemented))
     }
     
-    func getWatchList(completion: @escaping (Result<[Movie], Error>) -> Void) {
+    func getWatchList(completion: @escaping ReadMoviesOperation) {
         completion(.failure(ApplicationError.notImplemented))
     }
     
@@ -43,7 +43,7 @@ class MoviesService: MoviesDataSource {
                 do {
                     let data = try JSONDecoder().decode(T.self, from: data)
                     completion(.success(data))
-                } catch let error {
+                } catch {
                     completion(.failure(error))
                 }
             case .failure(let error):
