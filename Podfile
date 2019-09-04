@@ -6,6 +6,9 @@ target 'Movies' do
   use_frameworks!
 
   # Pods for Movies
+  pod 'Alamofire'
+  pod 'AlamofireImage'
+  pod 'AlamofireNetworkActivityIndicator'
   pod 'RxSwift'
   pod 'RxCocoa'
 
