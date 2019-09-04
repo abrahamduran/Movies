@@ -11,6 +11,8 @@ target 'Movies' do
   pod 'AlamofireNetworkActivityIndicator'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'Swinject'
+  pod 'SwinjectStoryboard'
 
   target 'MoviesTests' do
     inherit! :search_paths
