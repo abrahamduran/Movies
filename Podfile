@@ -14,6 +14,7 @@ target 'Movies' do
   pod 'RxCocoa'
   pod 'Swinject'
   pod 'SwinjectStoryboard'
+  pod 'Tagged'
 
   target 'MoviesTests' do
     inherit! :search_paths
