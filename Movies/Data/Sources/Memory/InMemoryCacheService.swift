@@ -19,7 +19,7 @@ class InMemoryCacheService: MoviesDataSource, MoviesDataStorage {
         detailsCache = NSCache<NSString, MovieDetailWrapper>()
     }
     
-    func discoverMovies(by year: Year, completion: @escaping ReadMoviesOperation) {
+    func discoverMovies(by year: Year, completion: @escaping (ReadMoviesOperation) -> Void) {
         guard let beginDate = Date(with: "\(year)-01-01") else {
             completion(.failure(ApplicationError.dateParsing(date: "\(year)-01-01")))
             return
@@ -44,19 +44,19 @@ class InMemoryCacheService: MoviesDataSource, MoviesDataStorage {
         completion(.success(result.detail))
     }
     
-    func searchMovies(with query: String, completion: @escaping ReadMoviesOperation) {
+    func searchMovies(with query: String, completion: @escaping (ReadMoviesOperation) -> Void) {
         let movies = getMoviesInCache()
         let filterdMovies = movies.filter { $0.title.lowercased().contains(query.lowercased()) }
         completion(.success(filterdMovies))
     }
     
-    func getFavoriteMovies(completion: @escaping ReadMoviesOperation) {
+    func getFavoriteMovies(completion: @escaping (ReadMoviesOperation) -> Void) {
         let movies = getMoviesInCache()
         let filteredMovies = movies.filter { $0.isFavorite }
         completion(.success(filteredMovies))
     }
     
-    func getWatchList(completion: @escaping ReadMoviesOperation) {
+    func getWatchList(completion: @escaping (ReadMoviesOperation) -> Void) {
         let movies = getMoviesInCache()
         let filteredMovies = movies.filter { $0.isInWatchList }
         completion(.success(filteredMovies))
@@ -75,14 +75,18 @@ class InMemoryCacheService: MoviesDataSource, MoviesDataStorage {
         return movies
     }
     
-    func save(_ movie: Movie, completion: @escaping SaveOperationResult) {
+    @discardableResult
+    func save(_ movie: Movie) -> SaveOperationResult {
         let key = "\(movie.id)" as NSString
         moviesCache.setObject(MovieWrapper(with: movie), forKey: key)
         moviesKeys.insert(key)
+        return Result { }
     }
     
-    func save(_ movieDetail: MovieDetail, completion: @escaping SaveOperationResult) {
+    @discardableResult
+    func save(_ movieDetail: MovieDetail) -> SaveOperationResult {
         let key = "\(movieDetail.id)" as NSString
         detailsCache.setObject(MovieDetailWrapper(with: movieDetail), forKey: key)
+        return Result { }
     }
 }

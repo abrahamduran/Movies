@@ -9,7 +9,7 @@
 import Foundation
 
 protocol MoviesDataStorage {
-    typealias SaveOperationResult = (Result<Bool, Error>) -> Void
-    func save(_ movie: Movie, completion: @escaping SaveOperationResult)
-    func save(_ movieDetail: MovieDetail, completion: @escaping SaveOperationResult)
+    typealias SaveOperationResult = Result<(), Error>
+    func save(_ movie: Movie) -> SaveOperationResult
+    func save(_ movieDetail: MovieDetail) -> SaveOperationResult
 }

@@ -16,7 +16,7 @@ final class RealmService: MoviesDataSource, MoviesDataStorage {
         realm = try Realm()
     }
     
-    func discoverMovies(by year: Year, completion: @escaping ReadMoviesOperation) {
+    func discoverMovies(by year: Year, completion: @escaping (ReadMoviesOperation) -> Void) {
         guard let beginDate = Date(with: "\(year)-01-01") else {
             completion(.failure(ApplicationError.dateParsing(date: "\(year)-01-01")))
             return
@@ -38,40 +38,39 @@ final class RealmService: MoviesDataSource, MoviesDataStorage {
         }
     }
     
-    func searchMovies(with query: String, completion: @escaping ReadMoviesOperation) {
+    func searchMovies(with query: String, completion: @escaping (ReadMoviesOperation) -> Void) {
         let predicate = NSPredicate(format: "title CONTAINS[c][d] %@", query)
         let results = realm.objects(MovieObject.self).filter(predicate)
         completion(.success(results.map { Movie(with: $0) }))
     }
     
-    func getFavoriteMovies(completion: @escaping ReadMoviesOperation) {
+    func getFavoriteMovies(completion: @escaping (ReadMoviesOperation) -> Void) {
         let results = realm.objects(MovieObject.self).filter("isFavorite == true")
         completion(.success(results.map { Movie(with: $0) }))
     }
     
-    func getWatchList(completion: @escaping ReadMoviesOperation) {
+    func getWatchList(completion: @escaping (ReadMoviesOperation) -> Void) {
         let results = realm.objects(MovieObject.self).filter("isInWatchList == true")
         completion(.success(results.map { Movie(with: $0) }))
     }
     
-    func save(_ movie: Movie, completion: SaveOperationResult) {
+    @discardableResult
+    func save(_ movie: Movie) -> SaveOperationResult {
         let object = movie.realmObject()
-        save(object, completion: completion)
+        return save(object)
     }
     
-    func save(_ movieDetail: MovieDetail, completion: SaveOperationResult) {
+    @discardableResult
+    func save(_ movieDetail: MovieDetail) -> SaveOperationResult {
         let object = movieDetail.realmObject()
-        save(object, completion: completion)
+        return save(object)
     }
     
-    private func save(_ object: Object, completion: SaveOperationResult) {
-        do {
+    private func save(_ object: Object) -> SaveOperationResult {
+        return Result {
             try realm.write {
                 realm.add(object, update: .modified)
             }
-            completion(.success(true))
-        } catch {
-            completion(.failure(error))
         }
     }
 }

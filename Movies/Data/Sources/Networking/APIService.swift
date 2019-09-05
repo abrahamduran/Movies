@@ -13,7 +13,7 @@ final class APIService: MoviesDataSource {
     
     init(apiClient: APIClient) { api = apiClient }
     
-    func discoverMovies(by year: Year, completion: @escaping ReadMoviesOperation) {
+    func discoverMovies(by year: Year, completion: @escaping (ReadMoviesOperation) -> Void) {
         let request = MovieRequest.discover(by: year)
         completionHandler(request: request, completion: completion)
     }
@@ -23,16 +23,16 @@ final class APIService: MoviesDataSource {
         completionHandler(request: request, completion: completion)
     }
     
-    func searchMovies(with query: String, completion: @escaping ReadMoviesOperation) {
+    func searchMovies(with query: String, completion: @escaping (ReadMoviesOperation) -> Void) {
         let request = MovieRequest.search(query)
         completionHandler(request: request, completion: completion)
     }
     
-    func getFavoriteMovies(completion: @escaping ReadMoviesOperation) {
+    func getFavoriteMovies(completion: @escaping (ReadMoviesOperation) -> Void) {
         completion(.failure(ApplicationError.notImplemented))
     }
     
-    func getWatchList(completion: @escaping ReadMoviesOperation) {
+    func getWatchList(completion: @escaping (ReadMoviesOperation) -> Void) {
         completion(.failure(ApplicationError.notImplemented))
     }
     

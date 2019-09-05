@@ -9,11 +9,11 @@
 import Foundation
 
 protocol MoviesDataSource {
-    typealias ReadMoviesOperation = (Result<[Movie], Error>) -> Void
+    typealias ReadMoviesOperation = Result<[Movie], Error>
     #warning("TODO: add sort options & paging")
-    func discoverMovies(by year: Year, completion: @escaping ReadMoviesOperation)
+    func discoverMovies(by year: Year, completion: @escaping (ReadMoviesOperation) -> Void)
     func getDetail(for movie: Movie, completion: @escaping (Result<MovieDetail, Error>) -> Void)
-    func searchMovies(with query: String, completion: @escaping ReadMoviesOperation)
-    func getFavoriteMovies(completion: @escaping ReadMoviesOperation)
-    func getWatchList(completion: @escaping ReadMoviesOperation)
+    func searchMovies(with query: String, completion: @escaping (ReadMoviesOperation) -> Void)
+    func getFavoriteMovies(completion: @escaping (ReadMoviesOperation) -> Void)
+    func getWatchList(completion: @escaping (ReadMoviesOperation) -> Void)
 }
