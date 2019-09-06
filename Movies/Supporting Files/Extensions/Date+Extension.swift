@@ -35,4 +35,9 @@ extension Date {
     var dated: String {
         return Formatters.date.string(from: self)
     }
+    
+    var year: Year {
+        let calendar = Calendar.current
+        return calendar.component(.year, from: self)
+    }
 }
