@@ -13,8 +13,8 @@ class APIService: MoviesDataSource {
     
     init(apiClient: APIClient) { api = apiClient }
     
-    func discoverMovies(by year: Year, completion: @escaping (ReadMoviesOperation) -> Void) {
-        let request = MovieRequest.discover(by: year)
+    func discoverMovies(by year: Year, with sort: SortOption, completion: @escaping (ReadMoviesOperation) -> Void) {
+        let request = MovieRequest.discover(by: year, with: sort)
         completionHandler(request: request, completion: completion)
     }
     

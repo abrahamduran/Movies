@@ -23,7 +23,7 @@ class MoviesService: MoviesServiceType {
         self.dispatchQueue = dispatchQueue
     }
     
-    func discoverMovies(by year: Year, completion: @escaping (ReadMoviesOperation) -> Void) {
+    func discoverMovies(by year: Year, with sort: SortOption, completion: @escaping (ReadMoviesOperation) -> Void) {
         dispatchQueue.async {
             var movies = [Movie]()
             var sourceError: Error?
@@ -37,7 +37,7 @@ class MoviesService: MoviesServiceType {
                 case .failure(let error): sourceError = error
                 }
             }
-            self.network.discoverMovies(by: year) { result in
+            self.network.discoverMovies(by: year, with: sort) { result in
                 block(result) ; group.leave()
             }
             
@@ -58,14 +58,14 @@ class MoviesService: MoviesServiceType {
                 return
             }
             
-            block(self.database.discoverMovies(by: year))
+            block(self.database.discoverMovies(by: year, with: sort))
             
             if !movies.isEmpty {
                 completion(.success(movies))
                 return
             }
             
-            block(self.inMemory.discoverMovies(by: year))
+            block(self.inMemory.discoverMovies(by: year, with: sort))
             
             if let error = sourceError, !movies.isEmpty {
                 completion(.failure(error))

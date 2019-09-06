@@ -19,7 +19,7 @@ class InMemoryCacheService: MoviesDataSource, MoviesDataStorage {
         detailsCache = NSCache<NSString, MovieDetailWrapper>()
     }
     
-    func discoverMovies(by year: Year, completion: @escaping (ReadMoviesOperation) -> Void) {
+    func discoverMovies(by year: Year, with sort: SortOption, completion: @escaping (ReadMoviesOperation) -> Void) {
         guard let beginDate = Date(with: "\(year)-01-01") else {
             completion(.failure(ApplicationError.dateParsing(date: "\(year)-01-01")))
             return

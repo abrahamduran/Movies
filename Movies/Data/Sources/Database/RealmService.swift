@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 final class RealmService: MoviesDataSource, MoviesDataStorage {
-    func discoverMovies(by year: Year, completion: @escaping (ReadMoviesOperation) -> Void) {
+    func discoverMovies(by year: Year, with sort: SortOption, completion: @escaping (ReadMoviesOperation) -> Void) {
         let realm: Realm!
         do {
             realm = try Realm()

@@ -10,8 +10,7 @@ import Foundation
 import Alamofire
 
 enum MovieRequest: RequestConvertible {
-    #warning("TODO: add sort options & paging")
-    case discover(by: Year)
+    case discover(by: Year, with: SortOption)
     case detail(for: Movie.Id)
     case search(String)
     
@@ -29,7 +28,7 @@ enum MovieRequest: RequestConvertible {
     
     var parameters: Parameters {
         switch self {
-        case .discover(let year):   return [ "year": year ]
+        case let .discover(year, sort):   return [ "year": year, "sort_by": sort.rawValue ]
         case .search(let query):    return [ "query": query ]
         default:                    return [:]
         }
