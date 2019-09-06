@@ -38,6 +38,11 @@
 		17FC36B923204C810033E67D /* InMemoryCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36B823204C810033E67D /* InMemoryCacheService.swift */; };
 		17FC36BB232058F00033E67D /* MoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36BA232058F00033E67D /* MoviesService.swift */; };
 		17FC36BD232094BD0033E67D /* RequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36BC232094BD0033E67D /* RequestAdapter.swift */; };
+		17FC36C32320A8DB0033E67D /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36C22320A8DB0033E67D /* DiscoverViewController.swift */; };
+		17FC36C62320CCA60033E67D /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36C52320CCA60033E67D /* DiscoverViewModel.swift */; };
+		17FC36CC2320ED060033E67D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36CB2320ED060033E67D /* Constants.swift */; };
+		17FC36D0232109ED0033E67D /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36CF232109ED0033E67D /* MovieListViewController.swift */; };
+		17FC36D223210C460033E67D /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36D123210C460033E67D /* MovieListViewModel.swift */; };
 		17FC36E223228DC50033E67D /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36E123228DC50033E67D /* SortOption.swift */; };
 		97C22CD741B5B1D278AA36E3 /* Pods_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F45007437FC72103560A03 /* Pods_Movies.framework */; };
 		E5CBF6075922726AE94D6D9D /* Pods_MoviesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761AF45C8A95FACC54A8E633 /* Pods_MoviesTests.framework */; };
@@ -89,6 +94,11 @@
 		17FC36B823204C810033E67D /* InMemoryCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryCacheService.swift; sourceTree = "<group>"; };
 		17FC36BA232058F00033E67D /* MoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesService.swift; sourceTree = "<group>"; };
 		17FC36BC232094BD0033E67D /* RequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAdapter.swift; sourceTree = "<group>"; };
+		17FC36C22320A8DB0033E67D /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		17FC36C52320CCA60033E67D /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
+		17FC36CB2320ED060033E67D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		17FC36CF232109ED0033E67D /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
+		17FC36D123210C460033E67D /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		17FC36E123228DC50033E67D /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		1F60F8D7552909CC2CEBC7AF /* Pods-MoviesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesTests.debug.xcconfig"; path = "Target Support Files/Pods-MoviesTests/Pods-MoviesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E58D473486324886A0CEE8C /* Pods-Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.release.xcconfig"; path = "Target Support Files/Pods-Movies/Pods-Movies.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +175,8 @@
 		17FC3677231F8DCA0033E67D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				17FC36C42320CC840033E67D /* Base */,
+				17FC3678231F8DEC0033E67D /* Discover */,
 				17FC367B231F8E090033E67D /* Favorites */,
 				17FC3679231F8DF60033E67D /* MovieDetail */,
 				17FC3678231F8DEC0033E67D /* Movies */,
@@ -173,11 +185,13 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		17FC3678231F8DEC0033E67D /* Movies */ = {
+		17FC3678231F8DEC0033E67D /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				17FC36C22320A8DB0033E67D /* DiscoverViewController.swift */,
+				17FC36C52320CCA60033E67D /* DiscoverViewModel.swift */,
 			);
-			path = Movies;
+			path = Discover;
 			sourceTree = "<group>";
 		};
 		17FC3679231F8DF60033E67D /* MovieDetail */ = {
@@ -216,6 +230,7 @@
 			children = (
 				17FC3684231F926A0033E67D /* Extensions */,
 				17FC36A4231FA9910033E67D /* ApplicationError.swift */,
+				17FC36CB2320ED060033E67D /* Constants.swift */,
 				17FC3692231F98340033E67D /* NetworkParameters.swift */,
 				17FC369E231FA1F70033E67D /* Typealiases.swift */,
 			);
@@ -270,6 +285,7 @@
 				17FC369C231FA0EE0033E67D /* MoviesDataSource.swift */,
 				17FC36B12320403F0033E67D /* MoviesDataStorage.swift */,
 				17FC36BA232058F00033E67D /* MoviesService.swift */,
+				17FC36DD232269700033E67D /* SearchContext.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -286,10 +302,10 @@
 		17FC3684231F926A0033E67D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				17FC36A6231FB0F70033E67D /* Date+Extension.swift */,
 				17FC368C231F95D50033E67D /* DispatchQueue+Extension.swift */,
 				17FC368E231F960D0033E67D /* UIApplication+Extension.swift */,
-				17FC3694231F9B610033E67D /* Notification+Extension.swift */,
-				17FC36A6231FB0F70033E67D /* Date+Extension.swift */,
+				17FC36C92320EC070033E67D /* UIImageView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -320,6 +336,15 @@
 				17FC36B623204C380033E67D /* MovieDetailWrapper.swift */,
 			);
 			path = Wrappers;
+			sourceTree = "<group>";
+		};
+		17FC36C42320CC840033E67D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				17FC36CF232109ED0033E67D /* MovieListViewController.swift */,
+				17FC36D123210C460033E67D /* MovieListViewModel.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		1A5626C41FF4112C2196179D /* Pods */ = {
@@ -519,6 +544,8 @@
 				17FC368D231F95D50033E67D /* DispatchQueue+Extension.swift in Sources */,
 				17FC3691231F97AB0033E67D /* ReachabilityManager.swift in Sources */,
 				17FC3689231F948A0033E67D /* RequestConvertible.swift in Sources */,
+				17FC36DE232269700033E67D /* SearchContext.swift in Sources */,
+				17FC36D0232109ED0033E67D /* MovieListViewController.swift in Sources */,
 				17FC36B523204BC40033E67D /* MovieWrapper.swift in Sources */,
 				17FC36BB232058F00033E67D /* MoviesService.swift in Sources */,
 				17FC368B231F957A0033E67D /* APIClientError.swift in Sources */,
@@ -528,14 +555,18 @@
 				17FC369F231FA1F70033E67D /* Typealiases.swift in Sources */,
 				17FC368F231F960D0033E67D /* UIApplication+Extension.swift in Sources */,
 				17FC36B723204C380033E67D /* MovieDetailWrapper.swift in Sources */,
+				17FC36D223210C460033E67D /* MovieListViewModel.swift in Sources */,
+				17FC36C32320A8DB0033E67D /* DiscoverViewController.swift in Sources */,
 				17FC36AE231FBA160033E67D /* Persistable.swift in Sources */,
 				17FC36A3231FA6200033E67D /* APIService.swift in Sources */,
 				17FC36B0232018350033E67D /* RealmService.swift in Sources */,
+				17FC36CC2320ED060033E67D /* Constants.swift in Sources */,
 				17FC36B923204C810033E67D /* InMemoryCacheService.swift in Sources */,
 				17FC36BD232094BD0033E67D /* RequestAdapter.swift in Sources */,
 				17FC3686231F92DF0033E67D /* APIClient.swift in Sources */,
 				17FC36AA231FB7AE0033E67D /* MovieObject.swift in Sources */,
 				17FC369B231F9DC10033E67D /* Movie.swift in Sources */,
+				17FC36C62320CCA60033E67D /* DiscoverViewModel.swift in Sources */,
 				17FC36B22320403F0033E67D /* MoviesDataStorage.swift in Sources */,
 				17FC3695231F9B610033E67D /* Notification+Extension.swift in Sources */,
 			);
