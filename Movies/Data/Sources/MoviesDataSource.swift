@@ -31,6 +31,7 @@ extension MoviesDataSource {
         group.enter()
         discoverMovies(by: year) { result in
             readResult = result
+            group.leave()
         }
         group.wait()
         return readResult
@@ -42,6 +43,7 @@ extension MoviesDataSource {
         group.enter()
         getDetail(for: movie) { result in
             readResult = result
+            group.leave()
         }
         group.wait()
         return readResult
@@ -52,6 +54,7 @@ extension MoviesDataSource {
         group.enter()
         searchMovies(with: query) { result in
             readResult = result
+            group.leave()
         }
         group.wait()
         return readResult
@@ -64,6 +67,7 @@ extension MoviesDataSource {
         group.enter()
         getFavoriteMovies { result in
             readResult = result
+            group.leave()
         }
         group.wait()
         return readResult
@@ -75,6 +79,7 @@ extension MoviesDataSource {
         group.enter()
         getWatchList { result in
             readResult = result
+            group.leave()
         }
         group.wait()
         return readResult
