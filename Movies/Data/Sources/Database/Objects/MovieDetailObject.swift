@@ -40,7 +40,7 @@ extension MovieDetail: Persistable {
         object.overview = overview
         object.budget = budget
         object.revenue = revenue
-        object.runtime = runtime
+        object.runtime = runtime ?? 0
         object.genres = genres.reduce(List<String>()) { (list, genre) in
             list.append(genre)
             return list

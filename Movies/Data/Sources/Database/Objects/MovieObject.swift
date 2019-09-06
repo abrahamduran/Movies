@@ -13,11 +13,11 @@ class MovieObject: Object {
     @objc dynamic var id = 0
     @objc dynamic var title = ""
     @objc dynamic var rating = 0.0
-    @objc dynamic var posterPath = ""
+    @objc dynamic var posterPath: String? = nil
     @objc dynamic var isFavorite = false
     @objc dynamic var isInWatchList = false
     @objc dynamic var detail: MovieDetailObject?
-    @objc dynamic var releaseDate = Date(timeIntervalSince1970: 1)
+    @objc dynamic var releaseDate: Date? = nil
     
     override static func primaryKey() -> String? {
         return "id"

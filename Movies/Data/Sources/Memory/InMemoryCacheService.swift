@@ -30,7 +30,12 @@ class InMemoryCacheService: MoviesDataSource, MoviesDataStorage {
         }
         
         let movies = getMoviesInCache()
-        let filterdMovies = movies.filter { $0.releaseDate >= beginDate && $0.releaseDate <= endDate }
+        let filterdMovies = movies.filter {
+            if let date = $0.releaseDate {
+                return date >= beginDate && date <= endDate
+            }
+            return false
+        }
         completion(.success(filterdMovies))
     }
     

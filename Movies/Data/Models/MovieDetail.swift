@@ -14,7 +14,7 @@ struct MovieDetail: Decodable {
     let overview: String
     let budget: Int
     let revenue: Int
-    let runtime: Minutes
+    let runtime: Minutes?
     let genres: [String]
     let productionCompanies: [String]
 }
@@ -31,7 +31,7 @@ extension MovieDetail {
         overview = try container.decode(String.self, forKey: .overview)
         budget = try container.decode(Int.self, forKey: .budget)
         revenue = try container.decode(Int.self, forKey: .revenue)
-        runtime = try container.decode(Minutes.self, forKey: .runtime)
+        runtime = try container.decode(Minutes?.self, forKey: .runtime)
         genres = try container.decode([Genre].self, forKey: .genres).compactMap { $0.name }
         productionCompanies = try container.decode([ProductionCompany].self, forKey: .production_companies).compactMap { $0.name }
     }
