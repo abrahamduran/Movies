@@ -10,7 +10,7 @@ import Foundation
 
 enum ApplicationError: LocalizedError {
     case notImplemented, dateParsing(date: String)
-    case objectNotFound
+    case objectNotFound, rxSwift
     
     
     var localizedDescription: String {
@@ -21,6 +21,8 @@ enum ApplicationError: LocalizedError {
             return "The date \(date) could not be parsed. Either the date has an invalid format or the formatter was changed"
         case .objectNotFound:
             return "The specified query produced no results."
+        case .rxSwift:
+            return "RxSwift has produced an error."
         }
     }
     

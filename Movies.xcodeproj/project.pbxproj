@@ -42,6 +42,7 @@
 		17FC36C12320A0CB0033E67D /* MovieViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17FC36BF2320A0CB0033E67D /* MovieViewCell.xib */; };
 		17FC36C32320A8DB0033E67D /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36C22320A8DB0033E67D /* DiscoverViewController.swift */; };
 		17FC36C62320CCA60033E67D /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36C52320CCA60033E67D /* DiscoverViewModel.swift */; };
+		17FC36CA2320EC070033E67D /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36C92320EC070033E67D /* UIImageView+Extension.swift */; };
 		17FC36CC2320ED060033E67D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36CB2320ED060033E67D /* Constants.swift */; };
 		17FC36CE232109C10033E67D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36CD232109C10033E67D /* FavoritesViewController.swift */; };
 		17FC36D0232109ED0033E67D /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36CF232109ED0033E67D /* MovieListViewController.swift */; };
@@ -165,9 +166,9 @@
 				17FC3677231F8DCA0033E67D /* UI */,
 				17FC367D231F8E250033E67D /* Supporting Files */,
 				17FC3654231F68110033E67D /* AppDelegate.swift */,
-				17FC365A231F68110033E67D /* Main.storyboard */,
 				17FC365D231F68130033E67D /* Assets.xcassets */,
 				17FC365F231F68130033E67D /* LaunchScreen.storyboard */,
+				17FC365A231F68110033E67D /* Main.storyboard */,
 				17FC3662231F68130033E67D /* Info.plist */,
 			);
 			path = Movies;
@@ -582,6 +583,7 @@
 				17FC36B923204C810033E67D /* InMemoryCacheService.swift in Sources */,
 				17FC36BD232094BD0033E67D /* RequestAdapter.swift in Sources */,
 				17FC3686231F92DF0033E67D /* APIClient.swift in Sources */,
+				17FC36CA2320EC070033E67D /* UIImageView+Extension.swift in Sources */,
 				17FC36AA231FB7AE0033E67D /* MovieObject.swift in Sources */,
 				17FC369B231F9DC10033E67D /* Movie.swift in Sources */,
 				17FC36C62320CCA60033E67D /* DiscoverViewModel.swift in Sources */,
