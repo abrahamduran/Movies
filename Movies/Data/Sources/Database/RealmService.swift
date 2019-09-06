@@ -10,13 +10,13 @@ import Foundation
 import RealmSwift
 
 final class RealmService: MoviesDataSource, MoviesDataStorage {
-    private let realm: Realm
-    
-    init() throws {
-        realm = try Realm()
-    }
-    
     func discoverMovies(by year: Year, completion: @escaping (ReadMoviesOperation) -> Void) {
+        let realm: Realm!
+        do {
+            realm = try Realm()
+        } catch {
+            completion(.failure(error)) ; return
+        }
         guard let beginDate = Date(with: "\(year)-01-01") else {
             completion(.failure(ApplicationError.dateParsing(date: "\(year)-01-01")))
             return
@@ -30,7 +30,13 @@ final class RealmService: MoviesDataSource, MoviesDataStorage {
     }
     
     func getDetail(for movie: Movie, completion: @escaping (Result<MovieDetail, Error>) -> Void) {
-        let result = realm.objects(MovieDetailObject.self).filter("id == %@", movie.id).first
+        let realm: Realm!
+        do {
+            realm = try Realm()
+        } catch {
+            completion(.failure(error)) ; return
+        }
+        let result = realm.objects(MovieDetailObject.self).filter("id == %@", movie.id.rawValue).first
         if let result = result {
             completion(.success(MovieDetail(with: result)))
         } else {
@@ -39,17 +45,35 @@ final class RealmService: MoviesDataSource, MoviesDataStorage {
     }
     
     func searchMovies(with query: String, completion: @escaping (ReadMoviesOperation) -> Void) {
+        let realm: Realm!
+        do {
+            realm = try Realm()
+        } catch {
+            completion(.failure(error)) ; return
+        }
         let predicate = NSPredicate(format: "title CONTAINS[c][d] %@", query)
         let results = realm.objects(MovieObject.self).filter(predicate)
         completion(.success(results.map { Movie(with: $0) }))
     }
     
     func getFavoriteMovies(completion: @escaping (ReadMoviesOperation) -> Void) {
+        let realm: Realm!
+        do {
+            realm = try Realm()
+        } catch {
+            completion(.failure(error)) ; return
+        }
         let results = realm.objects(MovieObject.self).filter("isFavorite == true")
         completion(.success(results.map { Movie(with: $0) }))
     }
     
     func getWatchList(completion: @escaping (ReadMoviesOperation) -> Void) {
+        let realm: Realm!
+        do {
+            realm = try Realm()
+        } catch {
+            completion(.failure(error)) ; return
+        }
         let results = realm.objects(MovieObject.self).filter("isInWatchList == true")
         completion(.success(results.map { Movie(with: $0) }))
     }
@@ -79,6 +103,12 @@ final class RealmService: MoviesDataSource, MoviesDataStorage {
     }
     
     private func save(_ object: Object) -> SaveOperationResult {
+        let realm: Realm!
+        do {
+            realm = try Realm()
+        } catch {
+            return .failure(error)
+        }
         return Result {
             try realm.write {
                 realm.add(object, update: .modified)
