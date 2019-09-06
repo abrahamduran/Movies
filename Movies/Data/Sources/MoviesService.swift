@@ -8,7 +8,9 @@
 
 import Foundation
 
-class MoviesService: MoviesDataSource, MoviesDataStorage {
+protocol MoviesServiceType: MoviesDataSource, MoviesDataStorage { }
+
+class MoviesService: MoviesServiceType {
     private let inMemory: InMemoryCacheService
     private let database: RealmService
     private let network: APIService
