@@ -12,15 +12,17 @@ class MoviesService: MoviesDataSource, MoviesDataStorage {
     private let inMemory: InMemoryCacheService
     private let database: RealmService
     private let network: APIService
+    private let dispatchQueue: DispatchQueue
     
-    init(inMemory: InMemoryCacheService, database: RealmService, network: APIService) {
+    init(inMemory: InMemoryCacheService, database: RealmService, network: APIService, dispatchQueue: DispatchQueue) {
         self.inMemory = inMemory
         self.database = database
         self.network = network
+        self.dispatchQueue = dispatchQueue
     }
     
     func discoverMovies(by year: Year, completion: @escaping (ReadMoviesOperation) -> Void) {
-        DispatchQueue.global(qos: .userInteractive).async {
+        dispatchQueue.async {
             var movies = [Movie]()
             var sourceError: Error?
             
@@ -45,8 +47,6 @@ class MoviesService: MoviesDataSource, MoviesDataStorage {
                 return
             }
             
-            group.enter()
-            
             block(self.database.discoverMovies(by: year))
             
             if !movies.isEmpty {
@@ -63,7 +63,7 @@ class MoviesService: MoviesDataSource, MoviesDataStorage {
     }
     
     func getDetail(for movie: Movie, completion: @escaping (Result<MovieDetail, Error>) -> Void) {
-        DispatchQueue.global(qos: .userInteractive).async {
+        dispatchQueue.async {
             var result = self.inMemory.getDetail(for: movie)
         
             if case .success(let detail) = result {
@@ -96,7 +96,7 @@ class MoviesService: MoviesDataSource, MoviesDataStorage {
     }
     
     func searchMovies(with query: String, completion: @escaping (ReadMoviesOperation) -> Void) {
-        DispatchQueue.global(qos: .userInteractive).async {
+        dispatchQueue.async {
             let group = DispatchGroup()
             group.enter()
             var networkError: Error?
@@ -134,7 +134,7 @@ class MoviesService: MoviesDataSource, MoviesDataStorage {
     }
     
     func getFavoriteMovies(completion: @escaping (ReadMoviesOperation) -> Void) {
-        DispatchQueue.global(qos: .userInteractive).async {
+        dispatchQueue.async {
             let result = self.database.getFavoriteMovies()
             switch result {
             case .success(let movies): completion(.success(movies))
@@ -144,7 +144,7 @@ class MoviesService: MoviesDataSource, MoviesDataStorage {
     }
     
     func getWatchList(completion: @escaping (ReadMoviesOperation) -> Void) {
-        DispatchQueue.global(qos: .userInteractive).async {
+        dispatchQueue.async {
             let result = self.database.getWatchList()
             switch result {
             case .success(let movies): completion(.success(movies))
