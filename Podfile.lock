@@ -4,6 +4,8 @@ PODS:
     - Alamofire (~> 4.8)
   - AlamofireNetworkActivityIndicator (2.4.0):
     - Alamofire (~> 4.8)
+  - Cosmos (19.0.3)
+  - FaveButton (3.2.0)
   - Realm (3.17.3):
     - Realm/Headers (= 3.17.3)
   - Realm/Headers (3.17.3)
@@ -15,6 +17,7 @@ PODS:
   - RxRelay (5.0.0):
     - RxSwift (~> 5)
   - RxSwift (5.0.0)
+  - SideMenu (6.2.4)
   - Swinject (2.6.2)
   - SwinjectStoryboard (2.2.0):
     - Swinject (~> 2.6)
@@ -24,9 +27,12 @@ DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - AlamofireNetworkActivityIndicator
+  - Cosmos
+  - FaveButton
   - RealmSwift
   - RxCocoa
   - RxSwift
+  - SideMenu
   - Swinject
   - SwinjectStoryboard
   - Tagged
@@ -36,11 +42,14 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - AlamofireNetworkActivityIndicator
+    - Cosmos
+    - FaveButton
     - Realm
     - RealmSwift
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SideMenu
     - Swinject
     - SwinjectStoryboard
     - Tagged
@@ -49,15 +58,18 @@ SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   AlamofireNetworkActivityIndicator: 9acc3de3ca6645bf0efed462396b0df13dd3e7b8
+  Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
+  FaveButton: c818ab3d04d22a7615e93f08c7b35932acb3f735
   Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
   RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  SideMenu: 60c9be9452d0756c3e723f9e508abb028e138361
   Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
   SwinjectStoryboard: 32512ef16c2b0ff5b8f823b23539c4a50f6d3383
   Tagged: a6babffe08b180c499a7a422661621bd4f330840
 
-PODFILE CHECKSUM: 396be9e01ae453a9af7b14885b1260c070f7c587
+PODFILE CHECKSUM: aadd80f7035a17c5ca6fd2d6e666d64541eb75ca
 
 COCOAPODS: 1.7.5
