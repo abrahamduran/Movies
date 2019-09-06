@@ -15,9 +15,7 @@ final class ReachabilityManager {
     private var isListening = false
     
     private init() {
-        let host = try? NetworkParameters.appConfiguration().hostName
-        manager = NetworkReachabilityManager(host: host ?? "www.apple.com")
-        
+        manager = NetworkReachabilityManager(host: "www.apple.com")
         manager?.listener = { status in
             var name: Notification.Name = .networkIsReachable
             if [.unknown, .notReachable].contains(status) {
