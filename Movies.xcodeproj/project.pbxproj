@@ -38,6 +38,8 @@
 		17FC36B923204C810033E67D /* InMemoryCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36B823204C810033E67D /* InMemoryCacheService.swift */; };
 		17FC36BB232058F00033E67D /* MoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36BA232058F00033E67D /* MoviesService.swift */; };
 		17FC36BD232094BD0033E67D /* RequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36BC232094BD0033E67D /* RequestAdapter.swift */; };
+		17FC36C02320A0CB0033E67D /* MovieViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36BE2320A0CB0033E67D /* MovieViewCell.swift */; };
+		17FC36C12320A0CB0033E67D /* MovieViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17FC36BF2320A0CB0033E67D /* MovieViewCell.xib */; };
 		17FC36C32320A8DB0033E67D /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36C22320A8DB0033E67D /* DiscoverViewController.swift */; };
 		17FC36C62320CCA60033E67D /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36C52320CCA60033E67D /* DiscoverViewModel.swift */; };
 		17FC36CC2320ED060033E67D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36CB2320ED060033E67D /* Constants.swift */; };
@@ -94,6 +96,8 @@
 		17FC36B823204C810033E67D /* InMemoryCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryCacheService.swift; sourceTree = "<group>"; };
 		17FC36BA232058F00033E67D /* MoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesService.swift; sourceTree = "<group>"; };
 		17FC36BC232094BD0033E67D /* RequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAdapter.swift; sourceTree = "<group>"; };
+		17FC36BE2320A0CB0033E67D /* MovieViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewCell.swift; sourceTree = "<group>"; };
+		17FC36BF2320A0CB0033E67D /* MovieViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieViewCell.xib; sourceTree = "<group>"; };
 		17FC36C22320A8DB0033E67D /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		17FC36C52320CCA60033E67D /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		17FC36CB2320ED060033E67D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 				17FC3679231F8DF60033E67D /* MovieDetail */,
 				17FC3678231F8DEC0033E67D /* Movies */,
 				17FC367A231F8E000033E67D /* WatchList */,
+				17FC36BE2320A0CB0033E67D /* MovieViewCell.swift */,
+				17FC36BF2320A0CB0033E67D /* MovieViewCell.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -452,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17FC3661231F68130033E67D /* LaunchScreen.storyboard in Resources */,
+				17FC36C12320A0CB0033E67D /* MovieViewCell.xib in Resources */,
 				17FC365E231F68130033E67D /* Assets.xcassets in Resources */,
 				17FC365C231F68110033E67D /* Main.storyboard in Resources */,
 			);
@@ -550,6 +557,7 @@
 				17FC36BB232058F00033E67D /* MoviesService.swift in Sources */,
 				17FC368B231F957A0033E67D /* APIClientError.swift in Sources */,
 				17FC36A7231FB0F70033E67D /* Date+Extension.swift in Sources */,
+				17FC36C02320A0CB0033E67D /* MovieViewCell.swift in Sources */,
 				17FC36E223228DC50033E67D /* SortOption.swift in Sources */,
 				17FC369D231FA0EE0033E67D /* MoviesDataSource.swift in Sources */,
 				17FC369F231FA1F70033E67D /* Typealiases.swift in Sources */,
