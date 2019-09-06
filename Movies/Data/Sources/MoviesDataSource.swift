@@ -12,13 +12,13 @@ protocol MoviesDataSource {
     typealias ReadMoviesOperation = Result<[Movie], Error>
     func discoverMovies(by year: Year, with sort: SortOption, completion: @escaping (ReadMoviesOperation) -> Void)
     func getDetail(for movie: Movie, completion: @escaping (Result<MovieDetail, Error>) -> Void)
-    func searchMovies(with query: String, completion: @escaping (ReadMoviesOperation) -> Void)
+    func searchMovies(with query: String, in context: SearchContext, completion: @escaping (ReadMoviesOperation) -> Void)
     func getFavoriteMovies(completion: @escaping (ReadMoviesOperation) -> Void)
     func getWatchList(completion: @escaping (ReadMoviesOperation) -> Void)
     
     func discoverMovies(by year: Year, with sort: SortOption) -> ReadMoviesOperation
     func getDetail(for movie: Movie) -> Result<MovieDetail, Error>
-    func searchMovies(with query: String) -> ReadMoviesOperation
+    func searchMovies(with query: String, in context: SearchContext) -> ReadMoviesOperation
     func getFavoriteMovies() -> ReadMoviesOperation
     func getWatchList() -> ReadMoviesOperation
 }
@@ -48,10 +48,10 @@ extension MoviesDataSource {
         return readResult
     }
     
-    func searchMovies(with query: String) -> ReadMoviesOperation {var readResult: ReadMoviesOperation!
+    func searchMovies(with query: String, in context: SearchContext) -> ReadMoviesOperation {var readResult: ReadMoviesOperation!
         let group = DispatchGroup()
         group.enter()
-        searchMovies(with: query) { result in
+        searchMovies(with: query, in: context) { result in
             readResult = result
             group.leave()
         }

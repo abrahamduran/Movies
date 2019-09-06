@@ -106,40 +106,34 @@ class MoviesService: MoviesServiceType {
         }
     }
     
-    func searchMovies(with query: String, completion: @escaping (ReadMoviesOperation) -> Void) {
+    func searchMovies(with query: String, in context: SearchContext, completion: @escaping (ReadMoviesOperation) -> Void) {
         dispatchQueue.async {
-            let group = DispatchGroup()
-            group.enter()
-            var networkError: Error?
-            self.network.searchMovies(with: query) { result in
-                switch result {
-                case .success(let movies):
-                    movies.forEach { self.save($0) }
-                    completion(.success(movies))
-                case .failure(let error):
-                    networkError = error
-                }
-                group.leave()
-            }
-            group.wait()
-            guard let sourceError = networkError else { return }
-            var result = self.inMemory.searchMovies(with: query)
-            if case .success(let movies) = result {
-                completion(.success(movies))
+            guard context != .discover else {
+                self.searchMoviesInNetwork(with: query, in: context, completion: completion)
                 return
             }
             
-            result = self.database.searchMovies(with: query)
-            
+            let result = self.database.searchMovies(with: query, in: context)
+            completion(result)
+        }
+    }
+    
+    private func searchMoviesInNetwork(with query: String, in context: SearchContext, completion: @escaping (ReadMoviesOperation) -> Void) {
+        self.network.searchMovies(with: query, in: context) { result in
             switch result {
-            case .success(let movie):
-                completion(.success(movie))
-            case .failure(let error):
-                if  case .noInternetConnection? = (sourceError as? APIClientError) {
-                    completion(.failure(error))
-                } else {
-                    completion(.failure(sourceError))
+            case .success(var movies):
+                for index in movies.indices {
+                    movies[index].isFavorite =
+                        self.inMemory.isFavorite(movies[index]) ??
+                        self.database.isFavorite(movies[index])
+                    movies[index].isInWatchList =
+                        self.inMemory.isInWatchList(movies[index]) ??
+                        self.database.isInWatchList(movies[index])
+                    self.save(movies[index])
                 }
+                completion(.success(movies))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }

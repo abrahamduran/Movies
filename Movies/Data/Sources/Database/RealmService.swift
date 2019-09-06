@@ -44,15 +44,22 @@ final class RealmService: MoviesDataSource, MoviesDataStorage {
         }
     }
     
-    func searchMovies(with query: String, completion: @escaping (ReadMoviesOperation) -> Void) {
+    func searchMovies(with query: String, in context: SearchContext, completion: @escaping (ReadMoviesOperation) -> Void) {
         let realm: Realm!
         do {
             realm = try Realm()
         } catch {
             completion(.failure(error)) ; return
         }
-        let predicate = NSPredicate(format: "title CONTAINS[c][d] %@", query)
-        let results = realm.objects(MovieObject.self).filter(predicate)
+        let contextFilter = { () -> String in
+            switch context {
+            case .favorites: return "isFavorite == true"
+            case .watchList: return "isInWatchList == true"
+            default: return ""
+            }
+        }()
+        let predicate = NSPredicate(format: "title CONTAINS[c] %@", query)
+        let results = realm.objects(MovieObject.self).filter(predicate).filter(contextFilter)
         completion(.success(results.map { Movie(with: $0) }))
     }
     

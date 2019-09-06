@@ -49,9 +49,16 @@ class InMemoryCacheService: MoviesDataSource, MoviesDataStorage {
         completion(.success(result.detail))
     }
     
-    func searchMovies(with query: String, completion: @escaping (ReadMoviesOperation) -> Void) {
+    func searchMovies(with query: String, in context: SearchContext, completion: @escaping (ReadMoviesOperation) -> Void) {
         let movies = getMoviesInCache()
-        let filterdMovies = movies.filter { $0.title.lowercased().contains(query.lowercased()) }
+        var filterdMovies = { (movies) -> [Movie] in
+            switch context {
+            case .favorites: return movies.filter { $0.isFavorite }
+            case .watchList: return movies.filter { $0.isInWatchList }
+            default: return movies
+            }
+        }(movies)
+        filterdMovies = filterdMovies.filter { $0.title.lowercased().contains(query.lowercased()) }
         completion(.success(filterdMovies))
     }
     

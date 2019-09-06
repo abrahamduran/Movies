@@ -34,7 +34,7 @@ class APIService: MoviesDataSource {
         }
     }
     
-    func searchMovies(with query: String, completion: @escaping (ReadMoviesOperation) -> Void) {
+    func searchMovies(with query: String, in context: SearchContext, completion: @escaping (ReadMoviesOperation) -> Void) {
         let request = MovieRequest.search(query)
         completionHandler(request: request, completion: completion)
     }
