@@ -29,8 +29,7 @@ extension Movie {
     }
     
     init(from decoder: Decoder) throws {
-        var container = try decoder.container(keyedBy: CodingKeys.self)
-        container = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .results)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Movie.Id.self, forKey: .id)
         title = try container.decode(String.self, forKey: .title)
         rating = try container.decode(Double.self, forKey: .vote_average)

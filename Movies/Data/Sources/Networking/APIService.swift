@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class APIService: MoviesDataSource {
+class APIService: MoviesDataSource {
     private let api: APIClient
     
     init(apiClient: APIClient) { api = apiClient }
@@ -20,7 +20,18 @@ final class APIService: MoviesDataSource {
     
     func getDetail(for movie: Movie, completion: @escaping (Result<MovieDetail, Error>) -> Void) {
         let request = MovieRequest.detail(for: movie.id)
-        completionHandler(request: request, completion: completion)
+        api.execute(request) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    completion(.success(try JSONDecoder().decode(MovieDetail.self, from: data)))
+                } catch {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
     
     func searchMovies(with query: String, completion: @escaping (ReadMoviesOperation) -> Void) {
@@ -36,13 +47,13 @@ final class APIService: MoviesDataSource {
         completion(.failure(ApplicationError.notImplemented))
     }
     
-    private func completionHandler<T: Decodable>(request: RequestConvertible, completion: @escaping (Result<T, Error>) -> Void) {
+    private func completionHandler(request: RequestConvertible, completion: @escaping (ReadMoviesOperation) -> Void) {
         api.execute(request) { result in
             switch result {
             case .success(let data):
                 do {
-                    let data = try JSONDecoder().decode(T.self, from: data)
-                    completion(.success(data))
+                    let response = try JSONDecoder().decode(APIService.Response.self, from: data)
+                    completion(.success(response.results))
                 } catch {
                     completion(.failure(error))
                 }
@@ -50,5 +61,11 @@ final class APIService: MoviesDataSource {
                 completion(.failure(error))
             }
         }
+    }
+}
+
+extension APIService {
+    struct Response: Decodable {
+        let results: [Movie]
     }
 }
