@@ -32,21 +32,15 @@ extension MovieDetail {
         budget = try container.decode(Int.self, forKey: .budget)
         revenue = try container.decode(Int.self, forKey: .revenue)
         runtime = try container.decode(Minutes.self, forKey: .runtime)
-        
-        var _genres = [String]()
-        let genresContainer = try container.nestedUnkeyedContainer(forKey: .genres)
-        while !genresContainer.isAtEnd {
-            let genre = try container.decode(String.self, forKey: .name)
-            _genres.append(genre)
-        }
-        genres = _genres
-        
-        var _prodCompanies = [String]()
-        let companiesContainer = try container.nestedUnkeyedContainer(forKey: .production_companies)
-        while !companiesContainer.isAtEnd {
-            let genre = try container.decode(String.self, forKey: .name)
-            _prodCompanies.append(genre)
-        }
-        productionCompanies = _prodCompanies
+        genres = try container.decode([Genre].self, forKey: .genres).compactMap { $0.name }
+        productionCompanies = try container.decode([ProductionCompany].self, forKey: .production_companies).compactMap { $0.name }
     }
 }
+
+private typealias Genre = IdAndName
+private typealias ProductionCompany = IdAndName
+private struct IdAndName: Decodable {
+    let id: Int
+    let name: String
+}
+
