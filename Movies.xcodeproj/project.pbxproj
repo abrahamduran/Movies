@@ -42,6 +42,7 @@
 		17FC36C12320A0CB0033E67D /* MovieViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17FC36BF2320A0CB0033E67D /* MovieViewCell.xib */; };
 		17FC36C32320A8DB0033E67D /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36C22320A8DB0033E67D /* DiscoverViewController.swift */; };
 		17FC36C62320CCA60033E67D /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36C52320CCA60033E67D /* DiscoverViewModel.swift */; };
+		17FC36C82320DAAD0033E67D /* Swinject+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36C72320DAAD0033E67D /* Swinject+Setup.swift */; };
 		17FC36CA2320EC070033E67D /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36C92320EC070033E67D /* UIImageView+Extension.swift */; };
 		17FC36CC2320ED060033E67D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36CB2320ED060033E67D /* Constants.swift */; };
 		17FC36CE232109C10033E67D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC36CD232109C10033E67D /* FavoritesViewController.swift */; };
@@ -108,6 +109,7 @@
 		17FC36BF2320A0CB0033E67D /* MovieViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieViewCell.xib; sourceTree = "<group>"; };
 		17FC36C22320A8DB0033E67D /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		17FC36C52320CCA60033E67D /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
+		17FC36C72320DAAD0033E67D /* Swinject+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swinject+Setup.swift"; sourceTree = "<group>"; };
 		17FC36C92320EC070033E67D /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		17FC36CB2320ED060033E67D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		17FC36CD232109C10033E67D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				17FC36A4231FA9910033E67D /* ApplicationError.swift */,
 				17FC36CB2320ED060033E67D /* Constants.swift */,
 				17FC3692231F98340033E67D /* NetworkParameters.swift */,
+				17FC36C72320DAAD0033E67D /* Swinject+Setup.swift */,
 				17FC369E231FA1F70033E67D /* Typealiases.swift */,
 			);
 			path = "Supporting Files";
@@ -570,6 +573,7 @@
 				17FC3693231F98340033E67D /* NetworkParameters.swift in Sources */,
 				17FC36AC231FB7BD0033E67D /* MovieDetailObject.swift in Sources */,
 				17FC3655231F68110033E67D /* AppDelegate.swift in Sources */,
+				17FC36C82320DAAD0033E67D /* Swinject+Setup.swift in Sources */,
 				17FC36A5231FA9910033E67D /* ApplicationError.swift in Sources */,
 				17FC368D231F95D50033E67D /* DispatchQueue+Extension.swift in Sources */,
 				17FC36CE232109C10033E67D /* FavoritesViewController.swift in Sources */,
