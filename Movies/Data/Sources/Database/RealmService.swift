@@ -54,6 +54,18 @@ final class RealmService: MoviesDataSource, MoviesDataStorage {
         completion(.success(results.map { Movie(with: $0) }))
     }
     
+    func isFavorite(_ movie: Movie) -> Bool {
+        guard let realm = try? Realm() else { return false }
+        let result = realm.objects(MovieObject.self).filter("id == %@", movie.id.rawValue).first
+        return result?.isFavorite ?? false
+    }
+    
+    func isInWatchList(_ movie: Movie) -> Bool {
+        guard let realm = try? Realm() else { return false }
+        let result = realm.objects(MovieObject.self).filter("id == %@", movie.id.rawValue).first
+        return result?.isInWatchList ?? false
+    }
+    
     @discardableResult
     func save(_ movie: Movie) -> SaveOperationResult {
         let object = movie.realmObject()

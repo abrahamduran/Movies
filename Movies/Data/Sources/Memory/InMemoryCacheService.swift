@@ -62,6 +62,18 @@ class InMemoryCacheService: MoviesDataSource, MoviesDataStorage {
         completion(.success(filteredMovies))
     }
     
+    func isFavorite(_ movie: Movie) -> Bool? {
+        let movies = getMoviesInCache()
+        let result = movies.first { $0.id == movie.id }
+        return result?.isFavorite ?? nil
+    }
+    
+    func isInWatchList(_ movie: Movie) -> Bool? {
+        let movies = getMoviesInCache()
+        let result = movies.first { $0.id == movie.id }
+        return result?.isInWatchList ?? nil
+    }
+    
     private func getMoviesInCache() -> [Movie] {
         var movies = [Movie]()
         let keys = moviesKeys

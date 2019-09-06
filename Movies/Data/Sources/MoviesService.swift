@@ -42,7 +42,16 @@ class MoviesService: MoviesDataSource, MoviesDataStorage {
             group.wait()
             
             if !movies.isEmpty {
-                movies.forEach { self.save($0) }
+                for index in movies.indices {
+                    movies[index].isFavorite =
+                        self.inMemory.isFavorite(movies[index]) ??
+                        self.database.isFavorite(movies[index])
+                    movies[index].isInWatchList =
+                        self.inMemory.isInWatchList(movies[index]) ??
+                        self.database.isInWatchList(movies[index])
+                    self.save(movies[index])
+                }
+                
                 completion(.success(movies))
                 return
             }
