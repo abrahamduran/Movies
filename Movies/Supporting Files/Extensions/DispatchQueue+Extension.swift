@@ -10,4 +10,5 @@ import Foundation
 
 extension DispatchQueue {
     static let networking = DispatchQueue(label: "\(Bundle.bundleId).networking", qos: .utility, attributes: .concurrent)
+    static let datasource = DispatchQueue(label: "\(Bundle.bundleId).datasource", qos: .userInteractive, attributes: .concurrent)
 }
